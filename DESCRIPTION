@@ -1,9 +1,9 @@
 Package: slipt
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Synthetic Lethal Interaction Prediction Tool (SLIPT) from Cancer Genomics Data 
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Author: Tom Kelly
+Maintainer: Tom Kelly <tom.kelly@postgrad.otago.ac.nz>
+Description: Statistical detection of gene expression signatures of synthetic lethal gene interactions. Can be modified to utilise mutation status, DNA copy number, or DNA methylation at the gene level.
 License: What license is it under?
 LazyData: TRUE
