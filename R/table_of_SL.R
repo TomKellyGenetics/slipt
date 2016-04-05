@@ -1,3 +1,13 @@
+#' A Subsetting Function to process SLIPT predictions
+#'
+#' Extract the predictions synthetic lethal gene partners with synthetic lethal conditions and significance thresholds met.
+#' @param x Synthetic Lethal predictions to process, typically the output of \code{\link[slipt]{detect_SL}}
+#' @param significance Do you love cats? Defaults to TRUE.
+#' @keywords synthetic lethal, gene interaction, significance, post-processing, subset, slice
+#' @export
+#' @examples
+#' table_of_SL()
+#'
 table_of_SL <-
 function(x, significance = "fdr"){
   if(significance == "holm"){
