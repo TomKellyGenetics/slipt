@@ -17,7 +17,7 @@ function(query, datasetx){
       chi.pv<-lapply(aa, function(x) x$p.value)
       ee<-lapply(aa, function(x) x$expected)
       oo<-lapply(aa, function(x) x$observed)
-      synleth<-lapply(aa, function(x) ifelse(x$observed[1,1]<x$expected[1,1],1,0))
+      synleth<-lapply(aa, function(x) ifelse(x$observed[1,1]<x$expected[1,1] & x$observed[1,3]>x$expected[1,3],1,0))
       #Format Data for Output in CSV
       kp<-cbind(names(chi.pv),
                 colnames(datasetx)[match(names(chi.pv),colnames(datasetx))],
