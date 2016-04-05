@@ -5,7 +5,7 @@
 \title{A Count Function to process SLIPT predictions}
 \usage{
 count_of_SL(x, significance = "fdr", threshold = 0.05,
-  syn_lethal = "strong")
+  syn_lethal = "strong", ts_sl = TRUE)
 }
 \arguments{
 \item{x}{Data matrix. Synthetic Lethal predictions to process, typically the output of \code{\link[slipt]{detect_SL}}}
@@ -15,6 +15,8 @@ count_of_SL(x, significance = "fdr", threshold = 0.05,
 \item{threshold}{Numeric. Significance threshold (alpha, type I error rate) to cut-off (raw or adjusted) p-values. Defaults to 0.05.}
 
 \item{syn_lethal}{String. Stringency of synthetic lethal directional condition. Defaults to 'strong': symmetric replications. Other options are 'query' or 'candidate' or one-directional conditions (which gene is low in a low-high condition) or 'weak' for either one-directional condition.}
+
+\item{ts_sl}{Logical. Defaults to TRUE. Whether to test for synthetic lethality against low or high gene perturbations for tumour supressor gene inactivation (default) or oncogenic overactivation (alternative).}
 }
 \description{
 Count number of predicted synthetic lethal gene partners with synthetic lethal conditions and significance thresholds met.
