@@ -2,5 +2,6 @@
 
 export(count_of_SL)
 export(detect_SL)
+export(export_SL_latex)
 export(prep_data_for_SL)
 export(table_of_SL)

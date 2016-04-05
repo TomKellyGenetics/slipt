@@ -3,7 +3,9 @@ Type: Package
 Title: Synthetic Lethal Interaction Prediction Tool (SLIPT) from Cancer Genomics
     Data
 Version: 0.1.0
-Authors@R: Authors@R: person("Mik", "Black", email = "mik.black@otago.ac.nz", role = c("aut"))
+Authors@R: c(
+    person("Tom", "Kelly", email = "tom.kelly@postgrad.otago.ac.nz", role = c("aut", "cre")),
+    person("Mik", "Black", email = "mik.black@otago.ac.nz", role = "aut"))
 Description: Statistical detection of gene expression signatures of synthetic
     lethal gene interactions. Can be modified to utilise mutation status, DNA copy
     number, or DNA methylation at the gene level.
