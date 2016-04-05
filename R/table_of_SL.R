@@ -12,15 +12,15 @@
 table_of_SL <-
 function(x, significance = "fdr", threshold = 0.05){
   if(significance == "holm"){
-    x[(x[,7]=="1" & as.numeric(x[,9])<threshold), ] #SL interactions & Holm Sig
+    x[(x[,11]==2 & as.numeric(x[,16])<threshold), ] #SL interactions & Holm Sig
   } else if(significance == "fdr"){
-    x[(x[,7]=="1" & as.numeric(x[,10])<threshold), ] #SL interactions & FDR Sig
+    x[(x[,11]==2 & as.numeric(x[,17])<threshold), ] #SL interactions & FDR Sig
   } else if(significance == "raw"){
-    x[(x[,7]=="1" & as.numeric(x[,8])<threshold), ] #SL interactions & raw Sig
+    x[(x[,11]==2 & as.numeric(x[,15])<threshold), ] #SL interactions & raw Sig
   } else if(significance == "none" | is.null(significance) | missing(significance) | is.na(significance)){
-    x[x[,7]=="1", ] #SL interactions without signficance
+    x[x[,11]==2, ] #SL interactions without signficance
   } else if(significance %in% p.adjust.methods){
-    x[(x[,7]=="1" & p.adjust(as.numeric(x[,8]), method = significance)<threshold), ] #SL interactions & custom Sig adjust
+    x[(x[,11]==2 & p.adjust(as.numeric(x[,15]), method = significance)<threshold), ] #SL interactions & custom Sig adjust
   } else {
     warning("Please give a valid significance condition: none, raw, or a valid method for p.adjust()")
   }
