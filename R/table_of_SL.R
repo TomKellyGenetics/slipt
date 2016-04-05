@@ -2,7 +2,7 @@
 #'
 #' Extract the predictions synthetic lethal gene partners with synthetic lethal conditions and significance thresholds met.
 #' @param x Synthetic Lethal predictions to process, typically the output of \code{\link[slipt]{detect_SL}}
-#' @param significance Do you love cats? Defaults to TRUE.
+#' @param significance Significance condition for p-values to use: none, raw, or adjusted with a valid method for p.adjust() Defaults to fdr (false discovery rate / BH).
 #' @keywords synthetic lethal, gene interaction, significance, post-processing, subset, slice
 #' @export
 #' @examples
