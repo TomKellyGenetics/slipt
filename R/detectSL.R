@@ -2,7 +2,7 @@
 #'
 #' Statistical detection of expression signals consistent with synthetic lethal interaction. Based on the Chi-Square test with built-in multiple testing corrections.
 #' @param query string. Name of a gene to test all others against. Note this gene must be contained within the dataset, matching a column name of datasetx.
-#' @param datasetx Dataset input to be formatted. Input data is: samples (rows) x genes (columns) as formatted by \code{\link[slipt]{prep_data_for_SL}}. Output data is a table of genes (rows) x test statistics and outputs (columns), this tabular format is human-readable is handled by \code{\link[slipt]{count_of_SL}} or \code{\link[slipt]{table_of_SL}} for built-in summary statistics.
+#' @param datasetx Dataset input to be formatted. Input data is: samples (rows) x genes (columns) as formatted by \code{\link[slipt]{prep_data_for_SL}}. Output data is a table of genes (rows) x test statistics and outputs (columns), in order of most significantly supported candidate interacting parnter, this tabular format is human-readable is handled by \code{\link[slipt]{count_of_SL}} or \code{\link[slipt]{table_of_SL}} for built-in summary statistics.
 #' @keywords chi-square, synthetic lethal, expression, genetics, genomics
 #' @export
 #' @examples
