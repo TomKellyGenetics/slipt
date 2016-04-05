@@ -1,3 +1,13 @@
+#' Prediction of Synthetic Lethality
+#'
+#' Statistical detection of expression signals consistent with synthetic lethal interaction. Based on the Chi-Square test with built-in multiple testing corrections.
+#' @param query string. Name of a gene to test all others against. Note this gene must be contained within the dataset, matching a column name of datasetx.
+#' @param datasetx Dataset input to be formatted. Input data is: samples (rows) x genes (columns) as formatted by \code{\link[slipt]{prep_data_for_SL}}.
+#' @keywords chi-square, synthetic lethal, expression, genetics, genomics
+#' @export
+#' @examples
+#' detectSL()
+#'
 detectSL <-
 function(query, datasetx){
     if(query %in% colnames(datasetx)){
