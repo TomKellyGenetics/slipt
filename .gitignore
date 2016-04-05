@@ -3,5 +3,6 @@
 .RData
 .Ruserdata
 R/hello.R
+R/func.R
 man/hello.Rd
 DESCRIPTION~
