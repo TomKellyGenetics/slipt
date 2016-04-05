@@ -4,7 +4,7 @@
 #' @param x Data matrix. Synthetic Lethal predictions to process, typically the output of \code{\link[slipt]{detect_SL}}
 #' @param significance String. Significance condition for p-values to use: none, raw, or adjusted with a valid method for p.adjust() Defaults to fdr (false discovery rate / BH).
 #' @param threshold Numeric. Significance threshold (alpha, type I error rate) to cut-off (raw or adjusted) p-values. Defaults to 0.05.
-#' #' @keywords synthetic lethal, gene interaction, significance, post-processing, subset, slice
+#' @keywords synthetic lethal, gene interaction, significance, post-processing, subset, slice
 #' @export
 #' @examples
 #' table_of_SL()
