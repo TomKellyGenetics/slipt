@@ -4,7 +4,8 @@
 \alias{count_of_SL}
 \title{A Count Function to process SLIPT predictions}
 \usage{
-count_of_SL(x, significance = "fdr", threshold = 0.05)
+count_of_SL(x, significance = "fdr", threshold = 0.05,
+  syn_lethal = "strong")
 }
 \arguments{
 \item{x}{Data matrix. Synthetic Lethal predictions to process, typically the output of \code{\link[slipt]{detect_SL}}}
@@ -12,6 +13,8 @@ count_of_SL(x, significance = "fdr", threshold = 0.05)
 \item{significance}{String. Significance condition for p-values to use: none, raw, or adjusted with a valid method for p.adjust() Defaults to fdr (false discovery rate / BH).}
 
 \item{threshold}{Numeric. Significance threshold (alpha, type I error rate) to cut-off (raw or adjusted) p-values. Defaults to 0.05.}
+
+\item{syn_lethal}{String. Stringency of synthetic lethal directional condition. Defaults to 'strong': symmetric replications. Other options are 'query' or 'candidate' or one-directional conditions (which gene is low in a low-high condition) or 'weak' for either one-directional condition.}
 }
 \description{
 Count number of predicted synthetic lethal gene partners with synthetic lethal conditions and significance thresholds met.
