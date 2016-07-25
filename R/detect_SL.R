@@ -13,7 +13,7 @@ function(query, datasetx){
     if(query %in% colnames(datasetx)){
       query.datax<-datasetx[,match(query, colnames(datasetx))]
 
-      a<-apply(datasetx,2, function(x) chisq.test(table(query.datax, x)))
+      aa<-apply(datasetx,2, function(x) chisq.test(table(query.datax, x)))
       chi.pv<-lapply(aa, function(x) x$p.value)
       chi.df<-lapply(aa, function(x) x$parameter)
       chi.sq<-lapply(aa, function(x) x$statistic)
@@ -23,7 +23,7 @@ function(query, datasetx){
       synlethONCO<-lapply(aa, function(x) ifelse(x$observed[3,3]>x$expected[3,3] & x$observed[1,3]<x$expected[1,3] & x$observed[3,1]<x$expected[3,1],2,ifelse(x$observed[3,3]>x$expected[3,3] & x$observed[3,1]<x$expected[3,1],"Q",ifelse(x$observed[3,3]>x$expected[3,3] & x$observed[1,3]<x$expected[1,3],"C",0))))
       #Format Data for Output in CSV
       kp<-cbind(names(chi.pv),
-                rownames(Data_Matrix_BRCA_RNASeq_Voom)[match(names(chi.pv),rownames(Data_Matrix_BRCA_RNASeq_Voom))],
+                colnames(datasetx)[match(names(chi.pv),colnames(datasetx))],
                 unlist(lapply(oo,function(x) x[1,1])),
                 unlist(lapply(ee,function(x) x[1,1])),
                 unlist(lapply(oo,function(x) x[1,3])),
@@ -46,3 +46,4 @@ function(query, datasetx){
     }
     else return(list(head(rownames(dataset), n=nrow(dataset)), "Query gene not contained in the dataset. Please enter the gene symbol in UPPER CASE, examples are shown below. Please contact the curator, Tom Kelly, for more information: kelsi602@student.otago.ac.nz."))
   }
+
