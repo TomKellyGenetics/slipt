@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Tom Kelly, Parry Guilford, and Mik Black" />
+
+<meta name="date" content="2016-07-26" />
+
+<title>SLIPT: Synthetic Lethal Interaction Prediction Tool</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">SLIPT: Synthetic Lethal Interaction Prediction Tool</h1>
+<h4 class="author"><em>Tom Kelly, Parry Guilford, and Mik Black</em></h4>
+<h4 class="date"><em>2016-07-26</em></h4>
+
+
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">density</span>(golub[<span class="dv">1</span>,]))
+for(ii in <span class="dv">2</span>:<span class="kw">nrow</span>(golub)) <span class="kw">lines</span>(<span class="kw">density</span>(golub[ii,]))</code></pre></div>
+<p><img src="data:image/png;base64,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" alt /><!-- --></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(golub)</code></pre></div>
+<pre><code>## [1] 3051   38</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">golub.prep &lt;-<span class="st"> </span><span class="kw">prep_data_for_SL</span>(golub)
+<span class="kw">dim</span>(golub.prep)</code></pre></div>
+<pre><code>## [1]   38 3051</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">golub.prep[<span class="dv">1</span>:<span class="dv">6</span>, <span class="dv">1</span>:<span class="dv">6</span>]</code></pre></div>
+<pre><code>##      AFFX-HUMISGF3A/M97935_MA_at (endogenous control)
+## [1,]                                                0
+## [2,]                                                0
+## [3,]                                                0
+## [4,]                                                0
+## [5,]                                                0
+## [6,]                                                2
+##      AFFX-HUMISGF3A/M97935_MB_at (endogenous control)
+## [1,]                                                2
+## [2,]                                                0
+## [3,]                                                2
+## [4,]                                                1
+## [5,]                                                0
+## [6,]                                                2
+##      AFFX-HUMISGF3A/M97935_3_at (endogenous control)
+## [1,]                                               2
+## [2,]                                               0
+## [3,]                                               2
+## [4,]                                               0
+## [5,]                                               0
+## [6,]                                               1
+##      AFFX-HUMRGE/M10098_5_at (endogenous control)
+## [1,]                                            2
+## [2,]                                            0
+## [3,]                                            1
+## [4,]                                            2
+## [5,]                                            1
+## [6,]                                            2
+##      AFFX-HUMRGE/M10098_M_at (endogenous control)
+## [1,]                                            2
+## [2,]                                            0
+## [3,]                                            2
+## [4,]                                            1
+## [5,]                                            2
+## [6,]                                            2
+##      AFFX-HUMRGE/M10098_3_at (endogenous control)
+## [1,]                                            2
+## [2,]                                            1
+## [3,]                                            2
+## [4,]                                            2
+## [5,]                                            1
+## [6,]                                            2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">golub.SLtable &lt;-<span class="st"> </span><span class="kw">detect_SL</span>(<span class="st">&quot;WT1 Wilms tumor 1&quot;</span>, golub.prep)
+<span class="kw">dim</span>(golub.SLtable)</code></pre></div>
+<pre><code>## [1] 3051   17</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(golub.SLtable[,<span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">15</span>, <span class="dv">17</span>)])</code></pre></div>
+<pre><code>##                                                                                       TS_SynLethal
+## WT1 Wilms tumor 1                                                                     &quot;0&quot;         
+## KIAA0253 gene, partial cds                                                            &quot;0&quot;         
+## Death domain receptor 3 soluble form (DDR3) mRNA, partial cds                         &quot;0&quot;         
+## FK-506 binding protein (fkbp12.6) gene                                                &quot;0&quot;         
+## Immunoglobulin Heavy Chain, Vdjc Regions (Gb:L23564)                                  &quot;0&quot;         
+## SRF Serum response factor (c-fos serum response element-binding transcription factor) &quot;C&quot;         
+##                                                                                       Chi-squared       
+## WT1 Wilms tumor 1                                                                     &quot;76&quot;              
+## KIAA0253 gene, partial cds                                                            &quot;24.3589743589744&quot;
+## Death domain receptor 3 soluble form (DDR3) mRNA, partial cds                         &quot;23.8358809993425&quot;
+## FK-506 binding protein (fkbp12.6) gene                                                &quot;21.6482577251808&quot;
+## Immunoglobulin Heavy Chain, Vdjc Regions (Gb:L23564)                                  &quot;20.6254930966469&quot;
+## SRF Serum response factor (c-fos serum response element-binding transcription factor) &quot;19.6433267587114&quot;
+##                                                                                       rawPval     
+## WT1 Wilms tumor 1                                                                     &quot;1.2243e-15&quot;
+## KIAA0253 gene, partial cds                                                            &quot;6.7673e-05&quot;
+## Death domain receptor 3 soluble form (DDR3) mRNA, partial cds                         &quot;8.6158e-05&quot;
+## FK-506 binding protein (fkbp12.6) gene                                                &quot;0.00023546&quot;
+## Immunoglobulin Heavy Chain, Vdjc Regions (Gb:L23564)                                  &quot;0.00037566&quot;
+## SRF Serum response factor (c-fos serum response element-binding transcription factor) &quot;0.00058722&quot;
+##                                                                                       adjPval_FDR 
+## WT1 Wilms tumor 1                                                                     &quot;3.7352e-12&quot;
+## KIAA0253 gene, partial cds                                                            &quot;0.087623&quot;  
+## Death domain receptor 3 soluble form (DDR3) mRNA, partial cds                         &quot;0.087623&quot;  
+## FK-506 binding protein (fkbp12.6) gene                                                &quot;0.17959&quot;   
+## Immunoglobulin Heavy Chain, Vdjc Regions (Gb:L23564)                                  &quot;0.22923&quot;   
+## SRF Serum response factor (c-fos serum response element-binding transcription factor) &quot;0.25594&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">count_of_SL</span>(golub.SLtable, <span class="dt">significance =</span> <span class="st">&quot;raw&quot;</span>)</code></pre></div>
+<pre><code>## [1] 33</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">table_of_SL</span>(golub.SLtable, <span class="dt">significance =</span> <span class="st">&quot;raw&quot;</span>))[,<span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">15</span>, <span class="dv">17</span>)]</code></pre></div>
+<pre><code>##                                               TS_SynLethal
+## RAP1A RAP1A, member of RAS oncogene family    &quot;2&quot;         
+## IgG Fc receptor hFcRn mRNA                    &quot;2&quot;         
+## Melanoma antigen p15 mRNA                     &quot;2&quot;         
+## HCG V mRNA                                    &quot;2&quot;         
+## KIAA0168 gene                                 &quot;2&quot;         
+## RNA helicase (Myc-regulated dead box protein) &quot;2&quot;         
+##                                               Chi-squared       
+## RAP1A RAP1A, member of RAS oncogene family    &quot;18.5143819855358&quot;
+## IgG Fc receptor hFcRn mRNA                    &quot;16.3782873109796&quot;
+## Melanoma antigen p15 mRNA                     &quot;16.0535009861933&quot;
+## HCG V mRNA                                    &quot;15.8161571334648&quot;
+## KIAA0168 gene                                 &quot;13.8908612754767&quot;
+## RNA helicase (Myc-regulated dead box protein) &quot;13.4723865877712&quot;
+##                                               rawPval      adjPval_FDR
+## RAP1A RAP1A, member of RAS oncogene family    &quot;0.00097877&quot; &quot;0.27129&quot;  
+## IgG Fc receptor hFcRn mRNA                    &quot;0.0025514&quot;  &quot;0.27129&quot;  
+## Melanoma antigen p15 mRNA                     &quot;0.0029482&quot;  &quot;0.29001&quot;  
+## HCG V mRNA                                    &quot;0.003276&quot;   &quot;0.29001&quot;  
+## KIAA0168 gene                                 &quot;0.0076517&quot;  &quot;0.33637&quot;  
+## RNA helicase (Myc-regulated dead box protein) &quot;0.0091841&quot;  &quot;0.33637&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">golub.SLtable &lt;-<span class="st"> </span><span class="kw">detect_SL</span>(<span class="st">&quot;TP53 Tumor protein p53 (Li-Fraumeni syndrome)&quot;</span>, golub.prep)
+<span class="kw">dim</span>(golub.SLtable)</code></pre></div>
+<pre><code>## [1] 3051   17</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(golub.SLtable[,<span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">15</span>, <span class="dv">17</span>)])</code></pre></div>
+<pre><code>##                                               TS_SynLethal
+## TP53 Tumor protein p53 (Li-Fraumeni syndrome) &quot;0&quot;         
+## Nuclear protein, NP220                        &quot;0&quot;         
+## HnRNP F protein mRNA                          &quot;0&quot;         
+## Cyclin-dependent kinase 4 (CDK4) gene         &quot;0&quot;         
+## KIAA0186 gene                                 &quot;0&quot;         
+## Globin gene                                   &quot;0&quot;         
+##                                               Chi-squared       
+## TP53 Tumor protein p53 (Li-Fraumeni syndrome) &quot;76&quot;              
+## Nuclear protein, NP220                        &quot;33.1906640368179&quot;
+## HnRNP F protein mRNA                          &quot;30.0193129520053&quot;
+## Cyclin-dependent kinase 4 (CDK4) gene         &quot;26.5840729783037&quot;
+## KIAA0186 gene                                 &quot;25.0959894806049&quot;
+## Globin gene                                   &quot;25.0959894806049&quot;
+##                                               rawPval      adjPval_FDR 
+## TP53 Tumor protein p53 (Li-Fraumeni syndrome) &quot;1.2243e-15&quot; &quot;3.7352e-12&quot;
+## Nuclear protein, NP220                        &quot;1.0918e-06&quot; &quot;0.0016655&quot; 
+## HnRNP F protein mRNA                          &quot;4.8503e-06&quot; &quot;0.0049328&quot; 
+## Cyclin-dependent kinase 4 (CDK4) gene         &quot;2.4123e-05&quot; &quot;0.016314&quot;  
+## KIAA0186 gene                                 &quot;4.8123e-05&quot; &quot;0.016314&quot;  
+## Globin gene                                   &quot;4.8123e-05&quot; &quot;0.016314&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">count_of_SL</span>(golub.SLtable, <span class="dt">significance =</span> <span class="st">&quot;raw&quot;</span>)</code></pre></div>
+<pre><code>## [1] 178</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">count_of_SL</span>(golub.SLtable, <span class="dt">significance =</span> <span class="st">&quot;holm&quot;</span>)</code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">count_of_SL</span>(golub.SLtable, <span class="dt">significance =</span> <span class="st">&quot;fdr&quot;</span>)</code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table_of_SL</span>(golub.SLtable, <span class="dt">significance =</span> <span class="st">&quot;fdr&quot;</span>)[,<span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">15</span>, <span class="dv">17</span>)]</code></pre></div>
+<pre><code>##                                                                                        TS_SynLethal
+## Motilin gene exon 2 (and joined CDS)                                                   &quot;2&quot;         
+## TRYPTOPHANYL-TRNA SYNTHETASE                                                           &quot;2&quot;         
+## PMS8 mRNA (yeast mismatch repair gene PMS1 homologue), partial cds (C-terminal region) &quot;2&quot;         
+## AFFX-HUMTFRR/M11507_5_at (endogenous control)                                          &quot;2&quot;         
+## CYTOCHROME P450 IIF1                                                                   &quot;2&quot;         
+## Orphan receptor mRNA, partial cds                                                      &quot;2&quot;         
+## Transformation-Related Protein                                                         &quot;2&quot;         
+## CELL SURFACE GLYCOPROTEIN MUC18 PRECURSOR                                              &quot;2&quot;         
+##                                                                                        Chi-squared       
+## Motilin gene exon 2 (and joined CDS)                                                   &quot;25.0959894806049&quot;
+## TRYPTOPHANYL-TRNA SYNTHETASE                                                           &quot;22.4118178829717&quot;
+## PMS8 mRNA (yeast mismatch repair gene PMS1 homologue), partial cds (C-terminal region) &quot;21.6482577251808&quot;
+## AFFX-HUMTFRR/M11507_5_at (endogenous control)                                          &quot;21.4749342537804&quot;
+## CYTOCHROME P450 IIF1                                                                   &quot;20.2382478632479&quot;
+## Orphan receptor mRNA, partial cds                                                      &quot;20.2382478632479&quot;
+## Transformation-Related Protein                                                         &quot;20.2382478632479&quot;
+## CELL SURFACE GLYCOPROTEIN MUC18 PRECURSOR                                              &quot;20.2382478632479&quot;
+##                                                                                        rawPval     
+## Motilin gene exon 2 (and joined CDS)                                                   &quot;4.8123e-05&quot;
+## TRYPTOPHANYL-TRNA SYNTHETASE                                                           &quot;0.00016592&quot;
+## PMS8 mRNA (yeast mismatch repair gene PMS1 homologue), partial cds (C-terminal region) &quot;0.00023546&quot;
+## AFFX-HUMTFRR/M11507_5_at (endogenous control)                                          &quot;0.00025489&quot;
+## CYTOCHROME P450 IIF1                                                                   &quot;0.00044812&quot;
+## Orphan receptor mRNA, partial cds                                                      &quot;0.00044812&quot;
+## Transformation-Related Protein                                                         &quot;0.00044812&quot;
+## CELL SURFACE GLYCOPROTEIN MUC18 PRECURSOR                                              &quot;0.00044812&quot;
+##                                                                                        adjPval_FDR
+## Motilin gene exon 2 (and joined CDS)                                                   &quot;0.016314&quot; 
+## TRYPTOPHANYL-TRNA SYNTHETASE                                                           &quot;0.035349&quot; 
+## PMS8 mRNA (yeast mismatch repair gene PMS1 homologue), partial cds (C-terminal region) &quot;0.035349&quot; 
+## AFFX-HUMTFRR/M11507_5_at (endogenous control)                                          &quot;0.035349&quot; 
+## CYTOCHROME P450 IIF1                                                                   &quot;0.043863&quot; 
+## Orphan receptor mRNA, partial cds                                                      &quot;0.043863&quot; 
+## Transformation-Related Protein                                                         &quot;0.043863&quot; 
+## CELL SURFACE GLYCOPROTEIN MUC18 PRECURSOR                                              &quot;0.043863&quot;</code></pre>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

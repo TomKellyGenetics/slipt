@@ -1,0 +1,64 @@
+---
+title: "SLIPT: Synthetic Lethal Interaction Prediction Tool"
+author: "Tom Kelly, Parry Guilford, and Mik Black"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SLIPT - Synthetic Lethality}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo=FALSE, message=FALSE}
+library("slipt")
+if(!(require("multtest"))){
+  source("http://bioconductor.org/biocLite.R")
+  biocLite("multtest")
+  library("multtest")
+}
+```
+
+```{r, message=FALSE, echo=FALSE}
+data(golub, package = "multtest")
+rownames(golub) <- golub.gnames[,2]
+```
+
+
+```{r}
+plot(density(golub[1,]))
+for(ii in 2:nrow(golub)) lines(density(golub[ii,]))
+```
+
+```{r}
+dim(golub)
+golub.prep <- prep_data_for_SL(golub)
+dim(golub.prep)
+golub.prep[1:6, 1:6]
+```
+
+```{r, warning = FALSE}
+golub.SLtable <- detect_SL("WT1 Wilms tumor 1", golub.prep)
+dim(golub.SLtable)
+head(golub.SLtable[,c(11, 13, 15, 17)])
+```
+
+```{r}
+count_of_SL(golub.SLtable, significance = "raw")
+head(table_of_SL(golub.SLtable, significance = "raw"))[,c(11, 13, 15, 17)]
+```
+
+```{r, warning = FALSE}
+golub.SLtable <- detect_SL("TP53 Tumor protein p53 (Li-Fraumeni syndrome)", golub.prep)
+dim(golub.SLtable)
+head(golub.SLtable[,c(11, 13, 15, 17)])
+```
+
+```{r}
+count_of_SL(golub.SLtable, significance = "raw")
+count_of_SL(golub.SLtable, significance = "holm")
+count_of_SL(golub.SLtable, significance = "fdr")
+table_of_SL(golub.SLtable, significance = "fdr")[,c(11, 13, 15, 17)]
+```
+
+
+
