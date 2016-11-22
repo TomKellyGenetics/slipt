@@ -19,19 +19,20 @@ function(query, datasetx){
       chi.sq<-lapply(aa, function(x) x$statistic)
       ee<-lapply(aa, function(x) x$expected)
       oo<-lapply(aa, function(x) x$observed)
-      synlethTS<-lapply(aa, function(x) ifelse(x$observed[1,1]<x$expected[1,1] & x$observed[1,3]>x$expected[1,3] & x$observed[3,1]>x$expected[3,1],2,ifelse(x$observed[1,1]<x$expected[1,1] & x$observed[1,3]>x$expected[1,3],"Q",ifelse(x$observed[1,1]<x$expected[1,1] & x$observed[3,1]>x$expected[3,1],"C",0))))
-      synlethONCO<-lapply(aa, function(x) ifelse(x$observed[3,3]>x$expected[3,3] & x$observed[1,3]<x$expected[1,3] & x$observed[3,1]<x$expected[3,1],2,ifelse(x$observed[3,3]>x$expected[3,3] & x$observed[3,1]<x$expected[3,1],"Q",ifelse(x$observed[3,3]>x$expected[3,3] & x$observed[1,3]<x$expected[1,3],"C",0))))
+
+      synlethTS<-lapply(aa, function(x) ifelse(x$observed[1,1]<x$expected[1,1] & x$observed[1,ncol(x$observed)]>x$expected[1,ncol(x$observed)] & x$observed[nrow(x$observed),1]>x$expected[nrow(x$observed),1],2,ifelse(x$observed[1,1]<x$expected[1,1] & x$observed[1,ncol(x$observed)]>x$expected[1,ncol(x$observed)],"Q",ifelse(x$observed[1,1]<x$expected[1,1] & x$observed[nrow(x$observed),1]>x$expected[nrow(x$observed),1],"C",0))))
+      synlethONCO<-lapply(aa, function(x) ifelse(x$observed[nrow(x$observed),ncol(x$observed)]>x$expected[nrow(x$observed),ncol(x$observed)] & x$observed[1,ncol(x$observed)]<x$expected[1,ncol(x$observed)] & x$observed[nrow(x$observed),1]<x$expected[nrow(x$observed),1],2,ifelse(x$observed[nrow(x$observed),ncol(x$observed)]>x$expected[nrow(x$observed),ncol(x$observed)] & x$observed[nrow(x$observed),1]<x$expected[nrow(x$observed),1],"Q",ifelse(x$observed[nrow(x$observed),ncol(x$observed)]>x$expected[nrow(x$observed),ncol(x$observed)] & x$observed[1,ncol(x$observed)]<x$expected[1,ncol(x$observed)],"C",0))))
       #Format Data for Output in CSV
       kp<-cbind(names(chi.pv),
                 colnames(datasetx)[match(names(chi.pv),colnames(datasetx))],
                 unlist(lapply(oo,function(x) x[1,1])),
                 unlist(lapply(ee,function(x) x[1,1])),
-                unlist(lapply(oo,function(x) x[1,3])),
-                unlist(lapply(ee,function(x) x[1,3])),
-                unlist(lapply(oo,function(x) x[3,1])),
-                unlist(lapply(ee,function(x) x[3,1])),
-                unlist(lapply(oo,function(x) x[3,3])),
-                unlist(lapply(ee,function(x) x[3,3])),
+                unlist(lapply(oo,function(x) x[1,ncol(x$observed)])),
+                unlist(lapply(ee,function(x) x[1,ncol(x$observed)])),
+                unlist(lapply(oo,function(x) x[nrow(x$observed),1])),
+                unlist(lapply(ee,function(x) x[nrow(x$observed),1])),
+                unlist(lapply(oo,function(x) x[nrow(x$observed),ncol(x$observed)])),
+                unlist(lapply(ee,function(x) x[nrow(x$observed),ncol(x$observed)])),
                 unlist(synlethTS),
                 unlist(synlethONCO),
                 unlist(chi.sq),unlist(chi.df),

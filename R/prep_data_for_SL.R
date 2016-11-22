@@ -32,7 +32,7 @@ function(dataset, n = 3L, exclude = T){
   datasetx<-apply(dataset,1,function(y) ifelse(y<=quantile(as.numeric(y),1/n, na.rm=T),0,ifelse(y>quantile(as.numeric(y),(n-1)/n, na.rm=T),2,1)))
   rownames(datasetx) <- colnames(dataset)
   colnames(datasetx) <- rownames(dataset)
-  if(exclude){
+  if(exclude & n > 2){
     #Exclude genes with Q1=Q2
     datasetx<-datasetx[,!(apply(dataset, 1, function(y) quantile(as.numeric(y),1/n, na.rm=T))==apply(dataset, 1, function(y) quantile(as.numeric(y),(n-1)/n, na.rm=T)))]
   }
