@@ -20,8 +20,8 @@ function(query, datasetx){
       ee<-lapply(aa, function(x) x$expected)
       oo<-lapply(aa, function(x) x$observed)
 
-      synlethTS<-lapply(aa, function(x) ifelse(x$observed[1,1]<x$expected[1,1] & x$observed[1,ncol(x$observed)]>x$expected[1,ncol(x$observed)] & x$observed[nrow(x$observed),1]>x$expected[nrow(x$observed),1],2,ifelse(x$observed[1,1]<x$expected[1,1] & x$observed[1,ncol(x$observed)]>x$expected[1,ncol(x$observed)],"Q",ifelse(x$observed[1,1]<x$expected[1,1] & x$observed[nrow(x$observed),1]>x$expected[nrow(x$observed),1],"C",0))))
-      synlethONCO<-lapply(aa, function(x) ifelse(x$observed[nrow(x$observed),ncol(x$observed)]>x$expected[nrow(x$observed),ncol(x$observed)] & x$observed[1,ncol(x$observed)]<x$expected[1,ncol(x$observed)] & x$observed[nrow(x$observed),1]<x$expected[nrow(x$observed),1],2,ifelse(x$observed[nrow(x$observed),ncol(x$observed)]>x$expected[nrow(x$observed),ncol(x$observed)] & x$observed[nrow(x$observed),1]<x$expected[nrow(x$observed),1],"Q",ifelse(x$observed[nrow(x$observed),ncol(x$observed)]>x$expected[nrow(x$observed),ncol(x$observed)] & x$observed[1,ncol(x$observed)]<x$expected[1,ncol(x$observed)],"C",0))))
+      synlethTS<-lapply(aa, function(x) ifelse(x$observed[1,1]<x$expected[1,1] & x$observed[1,ncol(x$observed)]>x$expected[1,ncol(x$expected)] & x$observed[nrow(x$observed),1]>x$expected[nrow(x$expected),1],2,ifelse(x$observed[1,1]<x$expected[1,1] & x$observed[1,ncol(x$observed)]>x$expected[1,ncol(x$expected)],"Q",ifelse(x$observed[1,1]<x$expected[1,1] & x$observed[nrow(x$observed),1]>x$expected[nrow(x$expected),1],"C",0))))
+      synlethONCO<-lapply(aa, function(x) ifelse(x$observed[nrow(x$observed),ncol(x$observed)]>x$expected[nrow(x$expected),ncol(x$expected)] & x$observed[1,ncol(x$observed)]<x$expected[1,ncol(x$expected)] & x$observed[nrow(x$observed),1]<x$expected[nrow(x$expected),1],2,ifelse(x$observed[nrow(x$observed),ncol(x$observed)]>x$expected[nrow(x$expected),ncol(x$expected)] & x$observed[nrow(x$observed),1]<x$expected[nrow(x$expected),1],"Q",ifelse(x$observed[nrow(x$observed),ncol(x$observed)]>x$expected[nrow(x$expected),ncol(x$expected)] & x$observed[1,ncol(x$observed)]<x$expected[1,ncol(x$expected)],"C",0))))
       #Format Data for Output in CSV
       kp<-cbind(names(chi.pv),
                 colnames(datasetx)[match(names(chi.pv),colnames(datasetx))],
@@ -31,7 +31,7 @@ function(query, datasetx){
                 unlist(lapply(ee,function(x) x[1,ncol(x)])),
                 unlist(lapply(oo,function(x) x[nrow(x),1])),
                 unlist(lapply(ee,function(x) x[nrow(x),1])),
-                unlist(lapply(oo,function(x) x[nrow(x),ncol(x$observed)])),
+                unlist(lapply(oo,function(x) x[nrow(x),ncol(x)])),
                 unlist(lapply(ee,function(x) x[nrow(x),ncol(x)])),
                 unlist(synlethTS),
                 unlist(synlethONCO),
