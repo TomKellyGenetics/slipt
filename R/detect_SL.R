@@ -45,6 +45,6 @@ function(query, datasetx){
                       "TS_SynLethal","Onco_SynLethal","Chi-squared","df","rawPval","adjPval_holm", "adjPval_FDR")
       return(kp)
     }
-    else return(list(head(rownames(dataset), n=nrow(dataset)), "Query gene not contained in the dataset. Please enter the gene symbol in UPPER CASE, examples are shown below. Please contact the curator, Tom Kelly, for more information: kelsi602@student.otago.ac.nz."))
+    else return(list(head(rownames(datasetx), n=ncol(datasetx)), "Query gene not contained in the dataset. Please enter the gene symbol in UPPER CASE, examples are shown below. Please contact the curator, Tom Kelly, for more information: kelsi602@student.otago.ac.nz."))
   }
 
