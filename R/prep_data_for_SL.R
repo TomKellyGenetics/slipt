@@ -16,7 +16,7 @@ function(dataset, n = 3L, exclude = T){
     n <- as.integer(round(n))
     warning("rounding n to nearest integer")
   }
-  if(length(n)>1){
+  if(is.vector(n) & length(n)>1){
     n <- n[1]
     warning("n must be an integer, taking first value")
   }
