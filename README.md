@@ -10,6 +10,13 @@ To get the current released version from github:
 devtools::install_github("TomKellyGenetics/slipt", ref="master")
 ```
 
+To install the development version from this (private) repo as a collaborator:
+
+```R
+# install.packages("devtools")
+devtools::install_github("TomKellyGenetics/slipt", ref="master", auth_token = "f5a2b533442dc71d55e230dc60ca2758254231e7")
+```
+
 To get a minimal previous version from github:
 
 ```R
