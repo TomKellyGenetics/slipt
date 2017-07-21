@@ -7,8 +7,11 @@ R package to implement various functions for Synthetic Lethal Interaction analys
 
 Please cite this package when it is used. The following manuscript has been submitted to a journal for publication. A link to this article or a preprint will be given when it becomes available.
 
-Synthetic lethal interaction prediction of target pathways in E-cadherin-deficient breast cancers
+Synthetic lethal interaction prediction of target pathways in E-cadherin-deficient breast cancers.
+
 Simon Thomas Kelly, Augstine Chen, Parry J Guilford, and Michael A Black
+
+Submitted to _BMC Genomics_ 19/07/2017
 
 ## Install
 
