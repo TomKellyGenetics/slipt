@@ -1,7 +1,16 @@
 SLIPT: Synthetic Lethal Prediction Tool
 ===================
 
-R package to implement various functions for Synthetic Lethal Interaction analysis. Serves as a supplement to the Kelly et al. (2016) paper which presents detection of candidate synthetic lethal gene pairs from gene expression signatures in breast cancer genomics data from The Cancer Genome Atlas (TCGA) project. 
+R package to implement various functions for Synthetic Lethal Interaction analysis. Serves as a supplement to the Kelly et al. (unpublished) paper which presents detection of candidate synthetic lethal gene pairs from gene expression signatures in breast cancer genomics data from The Cancer Genome Atlas (TCGA) project. 
+
+## Citations
+
+Please cite this package when it is used. The following manuscript has been submitted to a journal for publication. A link to this article or a preprint will be given when it becomes available.
+
+Synthetic lethal interaction prediction of target pathways in E-cadherin-deficient breast cancers
+Simon Thomas Kelly, Augstine Chen, Parry J Guilford, and Michael A Black
+
+## Install
 
 To get the current released version from github:
 
