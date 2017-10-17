@@ -3,16 +3,6 @@ SLIPT: Synthetic Lethal Prediction Tool
 
 R package to implement various functions for Synthetic Lethal Interaction analysis. Serves as a supplement to the Kelly et al. (unpublished) paper which presents detection of candidate synthetic lethal gene pairs from gene expression signatures in breast cancer genomics data from The Cancer Genome Atlas (TCGA) project. 
 
-## Citations
-
-Please cite this package when it is used. The following manuscript has been submitted to a journal for publication. A link to this article or a preprint will be given when it becomes available.
-
-Synthetic lethal interaction prediction of target pathways in E-cadherin-deficient breast cancers.
-
-Simon Thomas Kelly, Augstine Chen, Parry J Guilford, and Michael A Black
-
-Submitted to _BMC Genomics_ 19/07/2017
-
 ## Install
 
 To get the current released version from github:
@@ -35,6 +25,35 @@ To get a minimal previous version from github:
 # install.packages("devtools")
 devtools::install_github("TomKellyGenetics/slipt", ref="basic")
 ```
+
+To get a stable version with code used in a Thesis submitted to the University of Otago (with limited documentation):
+
+```R
+# install.packages("devtools")
+devtools::install_github("TomKellyGenetics/slipt", ref="thesis")
+```
+
+## Citation 
+
+Please cite this package appropriately when it is used. The following manuscript has been submitted to a journal for publication. A link to this article or a preprint will be given when it becomes available.
+
+Synthetic lethal interaction prediction of target pathways in E-cadherin-deficient breast cancers.
+
+Simon Thomas Kelly, Augstine Chen, Parry J Guilford, and Michael A Black
+
+Submitted to _BMC Genomics_ 19/07/2017
+
+@article{Kelly2017,
+   Author = {Kelly, S. T. and Chen, A. and Guilford, P. J. and Black, M. A.},
+   Title = {Synthetic Lethal Interaction Prediction of Target Pathways in E-cadherin-deficient Breast Cancers},
+   Journal = {BMC Genomics},
+   Volume = {},
+   Number = {},
+   Pages = {},
+      Year = {2017},
+   Note = {Submitted and awaiting review} }
+
+This README will be updated to link to electronic archives of this thesis, pre-print, and published manuscript once they become available. No further changes will be made to the code in this branch.
 
 ## Running
 
