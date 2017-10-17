@@ -33,6 +33,9 @@ To get a stable version with code used in a Thesis submitted to the University o
 devtools::install_github("TomKellyGenetics/slipt", ref="thesis")
 ```
 
+See the following `thesis` branch for this stable repository: https://github.com/TomKellyGenetics/slipt/tree/thesis
+
+
 ## Citation 
 
 Please cite this package appropriately when it is used. The following manuscript has been submitted to a journal for publication. A link to this article or a preprint will be given when it becomes available.
