@@ -13,7 +13,7 @@ export_SL_latex(x)
 Exports the key synthetic lethal gene information in a LaTeX table. Can be done for all genes (output of \code{\link[slipt]{detect_SL}}) or with synthetic lethal conditions and significance thresholds met (output of \code{\link[slipt]{table_of_SL}}).
 }
 \examples{
-export_SL_latex()
+export_SL_latex(sl_table)
 
 }
 \keyword{LaTeX,}
@@ -27,4 +27,3 @@ export_SL_latex()
 \keyword{synthetic}
 \keyword{table}
 \keyword{tex,}
-

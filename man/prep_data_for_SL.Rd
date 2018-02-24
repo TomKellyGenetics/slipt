@@ -4,10 +4,12 @@
 \alias{prep_data_for_SL}
 \title{Prepare Dataset for SLIPT (Synthetic Lethal Predition)}
 \usage{
-prep_data_for_SL(dataset, exclude = T)
+prep_data_for_SL(dataset, n = 3L, exclude = T)
 }
 \arguments{
 \item{dataset}{Dataset input to be formatted. Input is genes (rows) x samples (columns). Output data is transposed: samples (rows) x genes (columns).}
+
+\item{n}{number of quantiles to test. Must be an integer. Defaults to 3.}
 
 \item{exclude}{Do you wish to exclude genes without quartile variation? Defaults to TRUE.}
 }
@@ -15,7 +17,7 @@ prep_data_for_SL(dataset, exclude = T)
 Prepare data (e.g., gene expression data) for synthetic lethal prediction (typically count or continous data) by bining samples into categorical data for each gene to be tested.
 }
 \examples{
-prep_data_for_SL()
+partitioned_data <- prep_data_for_SL(data)
 
 }
 \keyword{binning,}
@@ -23,4 +25,3 @@ prep_data_for_SL()
 \keyword{lethal}
 \keyword{quantile,}
 \keyword{synthetic}
-

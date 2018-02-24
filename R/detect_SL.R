@@ -6,7 +6,9 @@
 #' @keywords chi-square, synthetic lethal, expression, genetics, genomics
 #' @export
 #' @examples
-#' detect_SL()
+#' detect_SL("gene 1", prep_data_for_SL(data))
+#'
+#' detect_SL("gene 1", partitioned_data)
 #'
 detect_SL <-
 function(query, datasetx){

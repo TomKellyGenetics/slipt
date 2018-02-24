@@ -33,4 +33,3 @@ count_of_SL()
 \keyword{slice}
 \keyword{subset,}
 \keyword{synthetic}
-

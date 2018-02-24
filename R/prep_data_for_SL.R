@@ -7,7 +7,7 @@
 #' @keywords quantile, categorical, binning, synthetic lethal
 #' @export
 #' @examples
-#' prep_data_for_SL()
+#' partitioned_data <- prep_data_for_SL(data)
 #'
 prep_data_for_SL <-
 function(dataset, n = 3L, exclude = T){
@@ -29,7 +29,7 @@ function(dataset, n = 3L, exclude = T){
     warning("n must be at least 2")
   }
   #bin samples into low/med/high categories for expression of each gene
-  if(n == 2) datasetx<-apply(dataset,1,function(y) ifelse(y<=quantile(as.numeric(y),1/n, na.rm=T),0,1)) 
+  if(n == 2) datasetx<-apply(dataset,1,function(y) ifelse(y<=quantile(as.numeric(y),1/n, na.rm=T),0,1))
   if(n >= 3) datasetx<-apply(dataset,1,function(y) ifelse(y<=quantile(as.numeric(y),1/n, na.rm=T),0,ifelse(y>quantile(as.numeric(y),(n-1)/n, na.rm=T),2,1)))
   rownames(datasetx) <- colnames(dataset)
   colnames(datasetx) <- rownames(dataset)

@@ -22,7 +22,7 @@ table_of_SL(x, significance = "fdr", threshold = 0.05,
 Extract the predictions synthetic lethal gene partners with synthetic lethal conditions and significance thresholds met.
 }
 \examples{
-table_of_SL()
+table_of_SL(sl_table)
 
 }
 \keyword{gene}
@@ -33,4 +33,3 @@ table_of_SL()
 \keyword{slice}
 \keyword{subset,}
 \keyword{synthetic}
-

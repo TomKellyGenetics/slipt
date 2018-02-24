@@ -5,7 +5,7 @@
 #' @keywords synthetic lethal, gene interaction, significance, post-processing, subset, slice, LaTeX, tex, table
 #' @export
 #' @examples
-#' export_SL_latex()
+#' export_SL_latex(sl_table)
 #'
 export_SL_latex <-
 function(x) print(xtable(head(x[, c(3, 4, 13, 15, 17)], 25), display=c("s", "d", "g", "g", "g", "g")), type="latex", file=paste0(deparse(substitute(x)), ".tex"))

@@ -15,7 +15,9 @@ detect_SL(query, datasetx)
 Statistical detection of expression signals consistent with synthetic lethal interaction. Based on the Chi-Square test with built-in multiple testing corrections.
 }
 \examples{
-detect_SL()
+detect_SL("gene 1", prep_data_for_SL(data))
+
+detect_SL("gene 1", partitioned_data)
 
 }
 \keyword{chi-square,}
@@ -24,4 +26,3 @@ detect_SL()
 \keyword{genomics}
 \keyword{lethal,}
 \keyword{synthetic}
-
