@@ -11,6 +11,10 @@ Description: Statistical detection of gene expression signatures of synthetic
     number, or DNA methylation at the gene level.
 License: GPL-3
 Depends: xtable
-Recommends: testthat
 LazyData: TRUE
 RoxygenNote: 6.0.1
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr
