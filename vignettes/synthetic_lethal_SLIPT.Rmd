@@ -16,11 +16,11 @@ if(!(require("multtest"))){
   biocLite("multtest")
   library("multtest")
 }
-library("multtest")
 ```
 
 ```{r, message=FALSE, echo=FALSE}
-data(golub, package = "multtest")
+library("multtest")
+data(golub)
 rownames(golub) <- golub.gnames[,2]
 ```
 
