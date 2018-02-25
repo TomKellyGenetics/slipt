@@ -4,3 +4,4 @@
 ^\.travis\.yml$
 ^appveyor\.yml$
 sl_table.tex
+^data-raw$
