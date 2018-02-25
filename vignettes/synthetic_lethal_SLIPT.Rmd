@@ -16,6 +16,7 @@ if(!(require("multtest"))){
   biocLite("multtest")
   library("multtest")
 }
+library("multtest")
 ```
 
 ```{r, message=FALSE, echo=FALSE}

@@ -1,7 +1,23 @@
 library(slipt)
 context("SL detect")
 
-source("../../data-raw/source_data.R")
+#example data
+data <- c()
+for(i in 1:100){
+  data <- cbind(data, rnorm(1000))
+}
+rm(i)
+rownames(data) <- paste("gene", 1:1000)
+colnames(data) <- paste("sample", 1:100)
+dim(data)
+
+#load package functions
+library("slipt")
+
+##run examples
+#partition data
+partitioned_data <- prep_data_for_SL(data)
+dim(partitioned_data)
 
 test_that("SL predicted for expression quantiles", {
   #load("data/partitioned_data.rda")

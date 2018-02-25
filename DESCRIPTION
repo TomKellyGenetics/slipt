@@ -10,7 +10,8 @@ Description: Statistical detection of gene expression signatures of synthetic
     lethal gene interactions. Can be modified to utilise mutation status, DNA copy
     number, or DNA methylation at the gene level.
 License: GPL-3 + file LICENSE
-Depends: xtable
+Depends: R (>= 2.10),
+    xtable
 LazyData: TRUE
 RoxygenNote: 6.0.1
 Suggests:
