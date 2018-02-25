@@ -19,6 +19,8 @@ if(!(require("multtest"))){
 ```
 
 ```{r, message=FALSE, echo=FALSE}
+source("http://bioconductor.org/biocLite.R")
+biocLite("multtest")
 library("multtest")
 data(golub)
 rownames(golub) <- golub.gnames[,2]
