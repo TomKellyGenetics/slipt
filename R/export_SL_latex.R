@@ -3,6 +3,7 @@
 #' Exports the key synthetic lethal gene information in a LaTeX table. Can be done for all genes (output of \code{\link[slipt]{detect_SL}}) or with synthetic lethal conditions and significance thresholds met (output of \code{\link[slipt]{table_of_SL}}).
 #' @param x Data matrix. Synthetic Lethal predictions to process, typically the output of \code{\link[slipt]{detect_SL}} or \code{\link[slipt]{table_of_SL}}.
 #' @keywords synthetic lethal, gene interaction, significance, post-processing, subset, slice, LaTeX, tex, table
+#' @import xtable
 #' @importFrom utils head
 #' @export
 #' @examples
