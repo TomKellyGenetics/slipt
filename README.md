@@ -1,3 +1,6 @@
+[![Travis-CI Build Status](https://travis-ci.org/TomKellyGenetics/slipt.svg?branch=master)](https://travis-ci.org/TomKellyGenetics/slipt)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/TomKellyGenetics/slipt?branch=master&svg=true)](https://ci.appveyor.com/project/TomKellyGenetics/slipt)
+
 SLIPT: Synthetic Lethal Prediction Tool
 ===================
 
