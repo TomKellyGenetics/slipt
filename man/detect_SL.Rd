@@ -15,9 +15,24 @@ detect_SL(query, datasetx)
 Statistical detection of expression signals consistent with synthetic lethal interaction. Based on the Chi-Square test with built-in multiple testing corrections.
 }
 \examples{
-detect_SL("gene 1", prep_data_for_SL(data))
+#prepare data
+ data <- c()
+for(i in 1:100){
+  data <- cbind(data, rnorm(1000))
+}
+rm(i)
+rownames(data) <- paste("gene", 1:1000)
+colnames(data) <- paste("sample", 1:100)
+partitioned_data <- prep_data_for_SL(data, n = 3)
 
-detect_SL("gene 1", partitioned_data)
+#run SLIPT
+sl_table <- detect_SL("gene 1", partitioned_data)
+dim(sl_table)
+head(dim(sl_table))
+
+sl_table <- detect_SL("gene 1", prep_data_for_SL(data))
+dim(sl_table)
+head(dim(sl_table))
 
 }
 \keyword{chi-square,}

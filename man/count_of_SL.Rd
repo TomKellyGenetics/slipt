@@ -22,7 +22,27 @@ count_of_SL(x, significance = "fdr", threshold = 0.05,
 Count number of predicted synthetic lethal gene partners with synthetic lethal conditions and significance thresholds met.
 }
 \examples{
-count_of_SL()
+#prepare data
+ data <- c()
+for(i in 1:100){
+  data <- cbind(data, rnorm(1000))
+}
+rm(i)
+rownames(data) <- paste("gene", 1:1000)
+colnames(data) <- paste("sample", 1:100)
+partitioned_data <- prep_data_for_SL(data, n = 3)
+
+#run SLIPT
+sl_table <- detect_SL("gene 1", partitioned_data)
+dim(sl_table)
+head(dim(sl_table))
+
+sl_table <- detect_SL("gene 1", prep_data_for_SL(data))
+dim(sl_table)
+head(dim(sl_table))
+
+#count significant hits
+counts <- count_of_SL(sl_table)
 
 }
 \keyword{gene}

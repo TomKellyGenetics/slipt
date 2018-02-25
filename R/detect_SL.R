@@ -4,8 +4,20 @@
 #' @param query string. Name of a gene to test all others against. Note this gene must be contained within the dataset, matching a column name of datasetx.
 #' @param datasetx Dataset input to be formatted. Input data is: samples (rows) x genes (columns) as formatted by \code{\link[slipt]{prep_data_for_SL}}. Output data is a table of genes (rows) x test statistics and outputs (columns), in order of most significantly supported candidate interacting parnter, this tabular format is human-readable is handled by \code{\link[slipt]{count_of_SL}} or \code{\link[slipt]{table_of_SL}} for built-in summary statistics.
 #' @keywords chi-square, synthetic lethal, expression, genetics, genomics
+#' @importFrom stats chisq.test p.adjust p.adjust.methods quantile
 #' @export
 #' @examples
+#' #prepare data
+#'  data <- c()
+#' for(i in 1:100){
+#'   data <- cbind(data, rnorm(1000))
+#' }
+#' rm(i)
+#' rownames(data) <- paste("gene", 1:1000)
+#' colnames(data) <- paste("sample", 1:100)
+#' partitioned_data <- prep_data_for_SL(data, n = 3)
+#'
+#' #run SLIPT
 #' sl_table <- detect_SL("gene 1", partitioned_data)
 #' dim(sl_table)
 #' head(dim(sl_table))

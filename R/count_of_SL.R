@@ -9,6 +9,26 @@
 #' @keywords synthetic lethal, gene interaction, significance, post-processing, subset, slice
 #' @export
 #' @examples
+#' #prepare data
+#'  data <- c()
+#' for(i in 1:100){
+#'   data <- cbind(data, rnorm(1000))
+#' }
+#' rm(i)
+#' rownames(data) <- paste("gene", 1:1000)
+#' colnames(data) <- paste("sample", 1:100)
+#' partitioned_data <- prep_data_for_SL(data, n = 3)
+#'
+#' #run SLIPT
+#' sl_table <- detect_SL("gene 1", partitioned_data)
+#' dim(sl_table)
+#' head(dim(sl_table))
+#'
+#' sl_table <- detect_SL("gene 1", prep_data_for_SL(data))
+#' dim(sl_table)
+#' head(dim(sl_table))
+#'
+#' #count significant hits
 #' counts <- count_of_SL(sl_table)
 #'
 count_of_SL <-

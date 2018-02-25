@@ -7,7 +7,15 @@
 #' @keywords quantile, categorical, binning, synthetic lethal
 #' @export
 #' @examples
-#' load("data/data.rda")
+#' data <- c()
+#' for(i in 1:100){
+#'   data <- cbind(data, rnorm(1000))
+#' }
+#' rm(i)
+#' rownames(data) <- paste("gene", 1:1000)
+#' colnames(data) <- paste("sample", 1:100)
+#' dim(data)
+#'
 #' partitioned_data <- prep_data_for_SL(data, n = 3)
 #' dim(partitioned_data)
 #'

@@ -17,7 +17,17 @@ prep_data_for_SL(dataset, n = 3L, exclude = T)
 Prepare data (e.g., gene expression data) for synthetic lethal prediction (typically count or continous data) by bining samples into categorical data for each gene to be tested.
 }
 \examples{
-partitioned_data <- prep_data_for_SL(data)
+data <- c()
+for(i in 1:100){
+  data <- cbind(data, rnorm(1000))
+}
+rm(i)
+rownames(data) <- paste("gene", 1:1000)
+colnames(data) <- paste("sample", 1:100)
+dim(data)
+
+partitioned_data <- prep_data_for_SL(data, n = 3)
+dim(partitioned_data)
 
 }
 \keyword{binning,}
