@@ -9,7 +9,7 @@
 #' @keywords synthetic lethal, gene interaction, significance, post-processing, subset, slice
 #' @export
 #' @examples
-#' table_of_SL(sl_table)
+#' short_table <- table_of_SL(sl_table)
 #'
 table_of_SL <-
 function(x, significance = "fdr", threshold = 0.05, syn_lethal = "strong", ts_sl = TRUE){

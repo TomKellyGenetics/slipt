@@ -7,7 +7,9 @@
 #' @keywords quantile, categorical, binning, synthetic lethal
 #' @export
 #' @examples
-#' partitioned_data <- prep_data_for_SL(data)
+#' load("data/data.rda")
+#' partitioned_data <- prep_data_for_SL(data, n = 3)
+#' dim(partitioned_data)
 #'
 prep_data_for_SL <-
 function(dataset, n = 3L, exclude = T){
