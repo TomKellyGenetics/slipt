@@ -74,7 +74,7 @@ table_of_SL(SL_Table)
 ```
 
 
-##Vignette
+## Vignette
 
 Find more info in the accompanying vignette guide:
 
