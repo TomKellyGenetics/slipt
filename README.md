@@ -1,5 +1,8 @@
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/slipt)](https://cran.r-project.org/package=slipt)
 [![Travis-CI Build Status](https://travis-ci.org/TomKellyGenetics/slipt.svg?branch=master)](https://travis-ci.org/TomKellyGenetics/slipt)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/TomKellyGenetics/slipt?branch=master&svg=true)](https://ci.appveyor.com/project/TomKellyGenetics/slipt)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+
 
 SLIPT: Synthetic Lethal Prediction Tool
 ===================
