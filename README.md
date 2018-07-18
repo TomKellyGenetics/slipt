@@ -37,6 +37,7 @@ Synthetic lethal interaction prediction of target pathways in E-cadherin-deficie
 
 Simon Thomas Kelly, Augstine Chen, Parry J Guilford, and Michael A Black
 
+```
 @article{Kelly2017,
    Author = {Kelly, S. T. and Chen, A. and Guilford, P. J. and Black, M. A.},
    Title = {Synthetic Lethal Interaction Prediction of Target Pathways in E-cadherin-deficient Breast Cancers},
@@ -46,6 +47,7 @@ Simon Thomas Kelly, Augstine Chen, Parry J Guilford, and Michael A Black
    Pages = {},
       Year = {2017},
    Note = {Unpublished Manuscript} }
+```
 
 This README will be updated to link to electronic archives of this thesis, pre-print, and published manuscript once they become available. No further changes will be made to the code in this branch.
 
@@ -63,6 +65,7 @@ To cite the slipt package in publications use:
 
 A BibTeX entry for LaTeX users is
 
+```
   @Manual{,
     title = {slipt: Synthetic Lethal Interaction Prediction Tool},
     author = {S. Thomas Kelly and Michael A. Black},
@@ -71,9 +74,9 @@ A BibTeX entry for LaTeX users is
     url = {https://github.com/TomKellyGenetics/vioplot},
     doi = {10.5281/zenodo.1313924},
   }
+```
 
 Please also acknowledge the manuscript describing use of this package (currently under review).
-
 
 
 ## Running
