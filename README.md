@@ -3,7 +3,7 @@
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/TomKellyGenetics/slipt?branch=master&svg=true)](https://ci.appveyor.com/project/TomKellyGenetics/slipt)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![codecov](https://codecov.io/gh/TomKellyGenetics/slipt/branch/master/graph/badge.svg)](https://codecov.io/gh/TomKellyGenetics/slipt)
-
+[![DOI](https://zenodo.org/badge/55461436.svg)](https://zenodo.org/badge/latestdoi/55461436)
 
 SLIPT: Synthetic Lethal Prediction Tool
 ===================
