@@ -1,6 +1,8 @@
 SLIPT: Synthetic Lethal Prediction Tool
 ===================
 
+[![DOI](https://zenodo.org/badge/55461436.svg)](https://zenodo.org/badge/latestdoi/55461436)
+
 R package to implement various functions for Synthetic Lethal Interaction analysis. Serves as a supplement to the Kelly et al. (2017) thesis which presents detection of candidate synthetic lethal gene pairs from gene expression signatures in breast cancer genomics data from The Cancer Genome Atlas (TCGA) project. 
 
 To get the current released version from github:
