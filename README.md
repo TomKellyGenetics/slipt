@@ -51,6 +51,31 @@ This README will be updated to link to electronic archives of this thesis, pre-p
 
 This package was developed as part of a thesis project and the electronic archive of the full thesis can be found on the University of Otago thesis archive at [http://hdl.handle.net/10523/7699](http://hdl.handle.net/10523/7699)
 
+### Package Citation
+
+The package can be cited directly (as called with `citation(slipt)`):
+
+
+To cite the slipt package in publications use:
+
+  S. Thomas Kelly and Michael A. Black (2017). slipt: Synthetic Lethal Interaction Prediction Tool.
+  R package version 0.3.0. https://github.com/TomKellyGenetics/vioplot doi:10.5281/zenodo.1313924
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {slipt: Synthetic Lethal Interaction Prediction Tool},
+    author = {S. Thomas Kelly and Michael A. Black},
+    year = {2017},
+    note = {R package version 0.1.0},
+    url = {https://github.com/TomKellyGenetics/vioplot},
+    doi = {10.5281/zenodo.1313924},
+  }
+
+Please also acknowledge the manuscript describing use of this package (currently under review).
+
+
+
 ## Running
 
 SLIPT requires continous or count data to be binned into categorical data for each gene. `prep_data_for_SL` takes genes (rows) x samples (columns), performs this binning and transposes the data for input into `detect_SL`. This step is performed separately to enable query of multiple genes without computational load to repeating this data preparation. `detect_SL` takes a "query" genes and compares it's expression to every other potential "candidate" gene in the dataset returning a table of summary statistics (including adjusted p-values) with rows of genes ordered by significance. `count_of_SL` and `table_of-SL` perform post-processing to respectively count or extract the predicted synthetic lethal partner genes with various directional and significance criteria. While many configurations are possible (and documented), the default settings are recommended for stringent predictions with adjusting for the false-discovery rate and calling only symmetrically detected query-candidate pairs.
