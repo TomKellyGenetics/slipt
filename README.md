@@ -61,7 +61,7 @@ The package can be cited directly (as called with `citation(slipt)`):
 To cite the slipt package in publications use:
 
   S. Thomas Kelly and Michael A. Black (2017). slipt: Synthetic Lethal Interaction Prediction Tool.
-  R package version 0.3.0. https://github.com/TomKellyGenetics/vioplot doi:10.5281/zenodo.1313924
+  R package version 0.1.0. https://github.com/TomKellyGenetics/slipt doi:10.5281/zenodo.1313924
 
 A BibTeX entry for LaTeX users is
 
@@ -71,7 +71,7 @@ A BibTeX entry for LaTeX users is
     author = {S. Thomas Kelly and Michael A. Black},
     year = {2017},
     note = {R package version 0.1.0},
-    url = {https://github.com/TomKellyGenetics/vioplot},
+    url = {https://github.com/TomKellyGenetics/slipt},
     doi = {10.5281/zenodo.1313924},
   }
 ```
