@@ -10,6 +10,8 @@ citHeader("To cite package 'slipt' in publications use:")
                                   as.person("Michael A. Black")),
               year = year,
               note = vers,
+              url = "https://github.com/TomKellyGenetics/slipt",
+              doi = "10.5281/zenodo.1313924",
 
               textVersion =
               paste("S. Thomas Kelly and Michael A. Black (",
