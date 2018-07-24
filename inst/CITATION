@@ -16,7 +16,7 @@ citHeader("To cite package 'slipt' in publications use:")
               textVersion =
               paste("S. Thomas Kelly and Michael A. Black (",
                     year,
-                    "). slipt: Synthetic Lethal Interaction Prediction Too. ",
+                    "). slipt: Synthetic Lethal Interaction Prediction Tool. ",
                     vers, ".", " https://github.com/TomKellyGenetics/slipt doi:10.5281/zenodo.1313924",
                     sep=""))
 
